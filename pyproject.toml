@@ -23,10 +23,13 @@ classifiers = [
     "Topic :: Home Automation",
     "Topic :: System :: Hardware :: Hardware Drivers",
 ]
-dependencies = ["pyusb>=1.2.1"]
-
-[project.optional-dependencies]
-windows = ["libusb>=1.0.26b5"]
+dependencies = [
+    "pyusb>=1.2.1",
+    # Windows has no system libusb, and pyusb cannot locate one on its own -- without this a
+    # plain `pip install .` gets you "No backend available" the moment you touch the dongle.
+    # It is a hard dependency there, not an optional extra.
+    "libusb>=1.0.26b5 ; sys_platform == 'win32'",
+]
 
 [project.urls]
 Homepage = "https://github.com/CapraTheBest/tiqiaa-usb-ir"
