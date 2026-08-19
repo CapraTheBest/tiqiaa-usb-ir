@@ -1,10 +1,12 @@
 r"""
 Send a button from a Flipper Zero `.ir` file through the dongle.
 
-    python tools/irsend.py Sony_TV.ir Power
-    python tools/irsend.py Sony_TV.ir --list
-    python tools/irsend.py Sony_TV.ir Vol_up Vol_up Vol_dn   # several in sequence
-    python tools/irsend.py Sony_TV.ir Power --repeats 6      # fewer in-frame repeats
+    irsend Sony_TV.ir Power                  # after `pip install .`
+    irsend Sony_TV.ir --list
+    irsend Sony_TV.ir Vol_up Vol_up Vol_dn   # several in sequence
+    irsend Sony_TV.ir Power --repeats 6      # fewer in-frame repeats
+
+    python -m ir_dongle.irsend Sony_TV.ir Power     # without installing
 
 Each press is transmitted as the frame repeated `--repeats` times in ONE transmission, which
 is what remotes actually do -- many receivers ignore a single frame. The send then blocks
@@ -13,13 +15,10 @@ that wait is not optional.
 """
 import argparse
 import os
-import sys
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from ir_dongle.device import find_tiqiaa_dongle
-from ir_dongle.flipper_parser import load_ir_file
-from ir_dongle.ir_decode import decode
+from .device import find_tiqiaa_dongle
+from .flipper_parser import load_ir_file
+from .ir_decode import decode
 
 
 class _Key:

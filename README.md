@@ -22,7 +22,7 @@ dongle.close()
 
 ## What it does
 
-- **Transmits IR** through the dongle over raw USB (`pyusb`), on Windows/Linux/macOS
+- **Transmits IR** through the dongle over raw USB (`pyusb`)
 - **Reads and writes Flipper Zero `.ir` files**, both `parsed` and `raw` records
 - **Encodes** NEC / NEC42 / Samsung32 / RC5 / RC5X / RC6 / SIRC 12·15·20
 - **Decodes** raw mark/space timings back to `(protocol, address, command)` — structurally,
@@ -47,7 +47,14 @@ pip install -r requirements.txt
 ```
 
 **Windows** additionally needs the WinUSB driver bound to the dongle — use [Zadig][zadig],
-pick the `10C4:8468` device, install *WinUSB*. Linux needs a udev rule or root.
+pick the `10C4:8468` device, install *WinUSB*. Note that plugging into a **different USB port**
+creates a new device instance that may need Zadig again, and a Windows update can revert the
+binding to HIDClass; if the dongle stops being found, check the driver first.
+
+Linux needs a udev rule (or root) to open the device.
+
+Developed and tested on **Windows 11**. Nothing in it is Windows-specific beyond that driver
+step — `pyusb`/`libusb` cover Linux and macOS — but those are untested, so reports welcome.
 
 [zadig]: https://zadig.akeo.ie/
 

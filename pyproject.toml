@@ -33,7 +33,7 @@ Homepage = "https://github.com/CapraTheBest/tiqiaa-usb-ir"
 Issues = "https://github.com/CapraTheBest/tiqiaa-usb-ir/issues"
 
 [project.scripts]
-irsend = "tools.irsend:main"
+irsend = "ir_dongle.irsend:main"
 
 [tool.setuptools]
 packages = ["ir_dongle"]
