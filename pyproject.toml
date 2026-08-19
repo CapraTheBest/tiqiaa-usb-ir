@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiqiaa-usb-ir"
+version = "0.1.0"
+description = "Driver for the Tiqiaa / JOYROOM USB-C infrared dongle (10C4:8468). Transmit IR from a PC, with Flipper Zero .ir support."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+authors = [{ name = "CapraTheBest" }]
+keywords = [
+    "infrared", "ir", "ir-blaster", "tiqiaa", "joyroom", "jr-cy278",
+    "flipper-zero", "usb", "remote-control", "nec", "rc5", "sirc",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Home Automation",
+    "Topic :: System :: Hardware :: Hardware Drivers",
+]
+dependencies = ["pyusb>=1.2.1"]
+
+[project.optional-dependencies]
+windows = ["libusb>=1.0.26b5"]
+
+[project.urls]
+Homepage = "https://github.com/CapraTheBest/tiqiaa-usb-ir"
+Issues = "https://github.com/CapraTheBest/tiqiaa-usb-ir/issues"
+
+[project.scripts]
+irsend = "tools.irsend:main"
+
+[tool.setuptools]
+packages = ["ir_dongle"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

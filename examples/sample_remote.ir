@@ -1,0 +1,33 @@
+Filetype: IR signals file
+Version: 1
+#
+name: Power
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 08 00 00 00
+#
+name: Volume_Up
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 02 00 00 00
+#
+name: Volume_Down
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 03 00 00 00
+#
+name: Samsung_Power
+type: parsed
+protocol: Samsung32
+address: 07 00 00 00
+command: 02 00 00 00
+#
+name: TV_Input
+type: raw
+frequency: 38000
+duty_cycle: 0.33
+data: 9024 4512 564 564 564 1692 564 564 564 1692 564 564 564 1692 564 564 564 564 564 1692 564 564 564 564 564 564 564 1692 564 1692 564 1692 564 1692 564 1692 564 1692 564 1692 564 564 564 44352 9024 2256 564 96000
+#
